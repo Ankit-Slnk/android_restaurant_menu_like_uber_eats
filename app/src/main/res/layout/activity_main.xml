@@ -1,0 +1,193 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="RtlHardcoded">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/main.appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/main.collapsing"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imgRestaurant"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:focusableInTouchMode="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/restaurant" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/imgBack"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/white_round"
+                        android:onClick="onBackClick"
+                        android:src="@drawable/ic_back" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <ImageButton
+                        android:id="@+id/imgBtnFavourite"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/white_round"
+                        android:onClick="onFavouriteClick"
+                        android:src="@drawable/ic_heart_border"
+                        android:tint="@color/black" />
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/menuRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="32dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:listitem="@layout/restaurant_menu_item_view" />
+
+    <LinearLayout
+        android:id="@+id/llToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingTop="30dp"
+        android:visibility="invisible">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imgSearch"
+                android:layout_width="50dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:src="@drawable/search" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:tabMode="scrollable"
+                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llSearch"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/trans_black"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@color/white" />
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/grey_color2"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            app:iconifiedByDefault="false"
+            app:queryHint="Search menu" />
+
+        <LinearLayout
+            android:id="@+id/llSearchView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/llEmptySearchView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:src="@drawable/cookie" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="No Matches"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Try broadening your search"
+                    android:textColor="@color/grey_color4" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/searchMenuRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:paddingBottom="32dp"
+                android:visibility="gone"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                tools:listitem="@layout/restaurant_menu_item_view" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

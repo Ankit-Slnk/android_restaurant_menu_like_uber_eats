@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginRight="16dp">
+
+            <TextView
+                android:id="@+id/tvMenuName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="8dp"
+                android:text="Crispy Burger"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tvDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:paddingBottom="8dp"
+                android:text="Crispy Mayo or Spicy Mayo and Lettuce Burger"
+                android:textColor="@color/grey_color4"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="8dp"
+                android:text="$12.23"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/menuImage"
+            android:layout_width="@dimen/menu_image_height_width"
+            android:layout_height="@dimen/menu_image_height_width"
+            android:layout_gravity="center"
+            android:src="@drawable/burger" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/grey_color" />
+
+</LinearLayout>
